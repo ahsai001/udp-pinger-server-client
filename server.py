@@ -14,6 +14,9 @@ while True:
     # Receive the client packet along with the address it is coming from
     message, address = serverSocket.recvfrom(1024)
 
+    # ipHeader = message[:20]
+    # print("Received ipHeader : " + ipHeader.decode())
+
     date_str = " ".join(message.decode().split()[2:])
     print(date_str)
 
@@ -27,3 +30,5 @@ while True:
         continue
         # Otherwise, the server responds
     serverSocket.sendto(message, address)
+
+serverSocket.close()
